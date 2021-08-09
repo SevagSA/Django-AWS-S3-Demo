@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+    <h2>Upload an image here:</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit">
+    </form>
+
+    <h2>List of all images:</h2>
+
+    <ul>
+        {% for image in images  %}
+          <li>
+              <figure>
+                  <img src="{{image.image.url}}">
+                  <figcaption>{{image.caption}}</figcaption>
+              </figure>
+          </li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>
